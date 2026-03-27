@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
-import { Category } from '../model/category';
+import { Category } from '../model/Category';
 import { MatDialog } from '@angular/material/dialog';
 import { CategoryService } from '../category.service';
 import { CategoryEdit } from '../category-edit/category-edit';
