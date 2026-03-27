@@ -27,8 +27,14 @@ export class ClientEdit implements OnInit {
   }
 
   onSave() {
-    this.clientService.saveClient(this.client).subscribe(() => {
-      this.dialogRef.close();
+    this.clientService.saveClient(this.client).subscribe({
+      next: (resp) => {
+        this.dialogRef.close();
+      },
+      error: (error) => {
+        alert(`El cliente esta duplicado`);
+      },
+
     });
   }
 
