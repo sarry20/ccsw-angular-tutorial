@@ -8,10 +8,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { AuthorService } from '../../author/author.service';
-import { Author } from '../../author/model/Author';
-import { CategoryService } from '../../category/category.service';
-import { Category } from '../../category/model/Category';
 import { GameService } from '../../game/game.service';
 import { ClientService } from '../../client/client.service';
 import { LoanService } from '../loan.service';
@@ -44,7 +40,7 @@ export class LoanEdit implements OnInit {
         this.gameService.getGames().subscribe((games) => {
             this.games = games;
 
-            if (this.loan.game.category != null) {
+            if (this.loan.game != null && this.loan.game.category != null) {
                 const gameFilter: Game[] = games.filter(
                     (game) => game.category.id == this.data.loan.game.category.id
                 );
@@ -69,8 +65,13 @@ export class LoanEdit implements OnInit {
     }
 
     onSave() {
-        this.loanService.saveLoan(this.loan).subscribe((result) => {
-            this.dialogRef.close();
+        this.loanService.saveLoan(this.loan).subscribe({
+            next: () => {
+                this.dialogRef.close();
+            },
+            error: (err) => {
+                alert(` ${err.error.message || err.message}`);
+            }
         });
     }
 

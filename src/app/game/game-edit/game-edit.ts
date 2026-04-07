@@ -5,7 +5,7 @@ import { Game } from '../model/Game';
 import { AuthorService } from '../../author/author.service';
 import { Author } from '../../author/model/Author';
 import { CategoryService } from '../../category/category.service';
-import { Category } from '../../category/model/Category';
+import { Category } from '../../category/model/category';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';

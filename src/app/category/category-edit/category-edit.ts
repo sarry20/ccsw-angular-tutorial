@@ -3,7 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { Category } from '../model/Category';
+import { Category } from '../model/category';
 import { CategoryService } from '../category.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 

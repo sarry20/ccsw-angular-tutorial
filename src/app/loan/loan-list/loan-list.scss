@@ -25,6 +25,23 @@
             justify-content: center;
         }
     }
+    .filters {
+        display: flex;
+
+        mat-form-field {
+            width: 300px;
+            margin-right: 20px;
+        }
+
+        .buttons {
+            flex: auto;
+            align-self: center;
+
+            button {
+                margin-left: 15px;
+            }
+        }
+    }
 
     .buttons {
         text-align: right;

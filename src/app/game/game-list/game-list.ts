@@ -13,7 +13,7 @@ import { Game } from '../model/Game';
 import { GameService } from '../game.service';
 import { CategoryService } from '../../category/category.service';
 import { MatDialog } from '@angular/material/dialog';
-import { Category } from '../../category/model/Category';
+import { Category } from '../../category/model/category';
 
 @Component({
   selector: 'app-game-list',

@@ -36,8 +36,8 @@
             <input matInput [matDatepicker]="startPicker" placeholder="Fecha de préstamo" [(ngModel)]="loan.startDate"
                 name="startDate" required>
             <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
+            <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
             <mat-error>La fecha de préstamo no puede estar vacía</mat-error>
         </mat-form-field>
 
@@ -46,8 +46,8 @@
             <input matInput [matDatepicker]="endPicker" placeholder="Fecha de devolución" [(ngModel)]="loan.endDate"
                 name="endDate" required>
             <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
-            <mat-datepicker #picker2></mat-datepicker>
+            <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
             <mat-error>La fecha de devolución no puede estar vacía</mat-error>
         </mat-form-field>
     </form>

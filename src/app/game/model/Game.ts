@@ -1,5 +1,5 @@
 import { Author } from "../../author/model/Author";
-import { Category } from "../../category/model/Category";
+import { Category } from "../../category/model/category";
 
 export class Game {
     id: number;
