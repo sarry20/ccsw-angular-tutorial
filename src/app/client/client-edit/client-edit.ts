@@ -1,11 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Client } from '../model/Client';
 import { ClientService } from '../client.service';
+import { AlertMessage } from '../../core/alert-message/alert-message';
 
 @Component({
   selector: 'app-client-edit',
@@ -19,7 +20,8 @@ export class ClientEdit implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ClientEdit>,
     @Inject(MAT_DIALOG_DATA) public data: { client: Client },
-    private clientService: ClientService
+    private clientService: ClientService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +34,12 @@ export class ClientEdit implements OnInit {
         this.dialogRef.close();
       },
       error: (error) => {
-        alert(`El cliente esta duplicado`);
+        this.dialog.open(AlertMessage, {
+          data: {
+            title: 'Error',
+            description: 'El cliente esta duplicado'
+          }
+        });
       },
 
     });

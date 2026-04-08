@@ -4,7 +4,7 @@ import { Loan } from '../model/Loan';
 import { Client } from '../../client/model/Client';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -12,6 +12,7 @@ import { GameService } from '../../game/game.service';
 import { ClientService } from '../../client/client.service';
 import { LoanService } from '../loan.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { AlertMessage } from '../../core/alert-message/alert-message';
 
 @Component({
     selector: 'app-loan-edit',
@@ -31,7 +32,8 @@ export class LoanEdit implements OnInit {
         @Inject(MAT_DIALOG_DATA) public data: any,
         private gameService: GameService,
         private loanService: LoanService,
-        private clientService: ClientService
+        private clientService: ClientService,
+        public dialog: MatDialog
     ) { }
 
     ngOnInit(): void {
@@ -70,7 +72,13 @@ export class LoanEdit implements OnInit {
                 this.dialogRef.close();
             },
             error: (err) => {
-                alert(` ${err.error.message || err.message}`);
+                this.dialog.open(AlertMessage, {
+                    data: {
+                        title: 'Error',
+                        description: ` ${err.error.message || err.message}`,
+                    },
+                });
+//                alert(` ${err.error.message || err.message}`);
             }
         });
     }
