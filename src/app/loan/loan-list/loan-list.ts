@@ -10,7 +10,6 @@ import { Pageable } from '../../core/model/Pageable';
 import { Loan } from '../model/Loan';
 import { LoanService } from '../loan.service';
 import { LoanEdit } from '../loan-edit/loan-edit';
-import { Category } from '../../category/model/category';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
@@ -28,9 +27,9 @@ import { GameService } from '../../game/game.service';
     styleUrl: './loan-list.scss',
 })
 export class LoanList implements OnInit {
-    pageNumber: number = 0;
-    pageSize: number = 5;
-    totalElements: number = 0;
+    pageNumber = 0;
+    pageSize = 5;
+    totalElements = 0;
 
     dataSource = new MatTableDataSource<Loan>();
     displayedColumns: string[] = ['id', 'title', 'clientName', 'startDate', 'endDate', 'action'];

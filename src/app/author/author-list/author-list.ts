@@ -18,9 +18,9 @@ import { Pageable } from '../../core/model/Pageable';
   styleUrl: './author-list.scss',
 })
 export class AuthorList implements OnInit {
-  pageNumber: number = 0;
-  pageSize: number = 5;
-  totalElements: number = 0;
+  pageNumber = 0;
+  pageSize = 5;
+  totalElements = 0;
 
   dataSource = new MatTableDataSource<Author>();
   displayedColumns: string[] = ['id', 'name', 'nationality', 'action'];
