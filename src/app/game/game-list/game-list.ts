@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -32,8 +32,8 @@ import { Category } from '../../category/model/category';
   styleUrl: './game-list.scss',
 })
 export class GameList implements OnInit {
-  categories: Category[];
-  games: Game[];
+  categories = signal<Category[]>([]);
+  games = signal<Game[]>([]);
   filterCategory: Category;
   filterTitle: string;
 
@@ -44,11 +44,11 @@ export class GameList implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.gameService.getGames().subscribe((games) => (this.games = games));
-
+    this.onSearch();
+    
     this.categoryService
       .getCategories()
-      .subscribe((categories) => (this.categories = categories));
+      .subscribe((categories) => this.categories.set(categories));
   }
 
   onCleanFilter(): void {
@@ -64,7 +64,7 @@ export class GameList implements OnInit {
 
     this.gameService
       .getGames(title, categoryId)
-      .subscribe((games) => (this.games = games));
+      .subscribe((games) => this.games.set(games));
   }
 
   createGame() {
